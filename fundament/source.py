@@ -7,12 +7,12 @@ def source(lam,miu,time):
     exp = stats.expon.rvs(scale=miu,size=num).astype("int").tolist()
     num_channels = [1,2,4,8,12]
     sig = signal(poi,exp[:],num_channels)
-    print(poi)
-    print("the durtion is",time,"minutes.")
-    print(exp)
-    print(sig)
-    print("the durtion is",len(sig),"minutes.")
-    #return sig
+    #print(poi)
+    #print("the durtion is",time,"minutes.")
+    #print(exp)
+    #print(sig)
+    #print("the durtion is",len(sig),"minutes.")
+    return (sig,num)
 
 def signal(poi,exp,num_channels):
     import random
