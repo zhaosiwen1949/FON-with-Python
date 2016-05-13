@@ -1,5 +1,8 @@
+class numError(Exception):
+    pass
+
 from numpy import array
-def route_dict():
+def route_dict(num_city):
     route_dict={}
     route_dict[0]=[1,2,3]
     route_dict[1]=[0,2,7]
@@ -15,9 +18,15 @@ def route_dict():
     route_dict[11]=[8,9,12]
     route_dict[12]=[5,11,13]
     route_dict[13]=[8,12]
+    #throw an exception when num_city isn't equal to the num of city in route
+    if num_city != len(route_dict):
+        try:
+            raise numError()
+        except:
+            print("Oops!The num_city you are inputting doesn't adapt to the number of cities in the route")
     return route_dict
 
-def route(route_dict):
+def generate_route(route_dict):
     n = len(route_dict)
     route =array([65536]*n**2).reshape(n,n)
     for key,val in route_dict.items():
@@ -26,5 +35,5 @@ def route(route_dict):
             route[key,i] = 1
     return route
 
-print(route_dict())
-print(route(route_dict()))
+#print(route_dict())
+#print(generate_route(route_dict()))
